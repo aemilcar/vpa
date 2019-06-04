@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Metadata:
+  License: Apache-2.0
+Description: 'AWS CloudFormation Template to create the IAM roles and DynamoDB table needed for the workshop.'
+
+  VPALambdaAthenaPollerRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      RoleName: 
+        !Join
+        - ''
+        - - 'VPALambdaAthenaPollerRole'
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+             - lambda.amazonaws.com
+          Action:
+            - sts:AssumeRole
+      Path: "/"
+  VPALambdaAlexaSkillRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      RoleName: VPALambdaAlexaSkillRole
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+             - lambda.amazonaws.com
+          Action:
+            - sts:AssumeRole
+      Path: "/"

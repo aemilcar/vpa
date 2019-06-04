@@ -1,0 +1,81 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Metadata:
+  License: Apache-2.0
+Description: 'AWS CloudFormation Template to create the IAM roles needed for the workshop.'
+
+Resources:
+  VPALambdaAthenaPollerRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      RoleName: 
+        !Join
+        - ''
+        - - 'VPALambdaAthenaPollerRole_'
+          - !Ref 'AWS::StackName'
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+             - lambda.amazonaws.com
+          Action:
+            - sts:AssumeRole
+      Path: "/"
+  VPALambdaAlexaSkillRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      RoleName: 
+        !Join
+        - ''
+        - - 'VPALambdaAlexaSkillRole_'
+          - !Ref 'AWS::StackName'
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+             - lambda.amazonaws.com
+          Action:
+            - sts:AssumeRole
+      Path: "/"
+  AthenaPollerPolicies:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName:
+        !Sub 'AthenaPollerPolicy_${AWS::StackName}'
+      PolicyDocument:
+        Statement:
+        - Effect: Allow
+          Action: ['logs:*', 's3:*', 'dynamodb:*', 'athena:*', 'xray:*', 'glue:*']
+          Resource: '*'
+      Roles:
+        -
+          Ref: "VPALambdaAthenaPollerRole"
+  AlexaSkillPolicies:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName:
+        !Sub 'AlexaSkillPolicy_${AWS::StackName}'
+      PolicyDocument:
+        Statement:
+        - Effect: Allow
+          Action: ['logs:*', 'dynamodb:scan', 'dynamodb:GetItem', 'xray:*']
+          Resource: '*'
+      Roles:
+        -
+          Ref: "VPALambdaAlexaSkillRole"
+
+Outputs:
+  AthenaPollerRole:
+    Value: !Ref 'VPALambdaAthenaPollerRole'
+    Description: Name of the IAM Role for the Lambda polling Athena
+    Export: 
+      Name: !Sub "${AWS::StackName}-VPALambdaAthenaPollerRole"
+  AlexaSkillRole:
+    Value: !GetAtt 'VPALambdaAlexaSkillRole.Arn'
+    Description: Name of the IAM Role for the Lambda used by Alexa
+    Export: 
+      Name: !Sub "${AWS::StackName}-VPALambdaAlexaSkillRole"
