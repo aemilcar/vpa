@@ -61,5 +61,16 @@ DDBWriteCapacityUnits | 5
 
 When you launch the template you will be asked for a few inputs. Use the following table for reference.
 
+<details>
+<summary><strong>Watch a video of launching CloudFormation (Click to expand)</strong></summary><p>
+
+![launcg CloudFormation](./media/images/vpa-cloudformation-launch.gif)
+
+</details>
+
 <table><tr><td>Region</td> <td>Launch Template</td></tr>
-<tr><td>US-EAST-1</td> <td><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new" target="_blank"><IMG SRC="/media/images/CFN_Image_01.png"></a></td></tr></table>
+<tr><td>US-EAST-1</td> <td><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new" target="_blank"><IMG SRC="./media/images/CFN_Image_01.png"></a></td></tr></table>
+
+#### Main Modules: 
+1. [Amazon Athena Section](1-Voice-Powered-Analytics-Athena-Lab.md)
+1. [Amazon Alexa Section](2-Voice-Powered-Analytics-Alexa-Skills-Lab.md)
