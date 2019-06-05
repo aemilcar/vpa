@@ -62,4 +62,4 @@ DDBWriteCapacityUnits | 5
 When you launch the template you will be asked for a few inputs. Use the following table for reference.
 
 <table><tr><td>Region</td> <td>Launch Template</td></tr>
-<tr><td>US-EAST-1</td> <td><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=VPA-Setup&templateURL=https://github.com/aemilcar/vpa/blob/master/user_template.yml" target="_blank"><IMG SRC="/media/images/CFN_Image_01.png"></a></td></tr></table>
+<tr><td>US-EAST-1</td> <td><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new" target="_blank"><IMG SRC="/media/images/CFN_Image_01.png"></a></td></tr></table>
