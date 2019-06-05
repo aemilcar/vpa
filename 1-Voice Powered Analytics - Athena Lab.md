@@ -44,11 +44,11 @@ There is no need to copy the dataset to a new bucket for the workshop. The data 
 2. For the **Ireland region**, modify the location field below with the following location: LOCATION 's3://aws-vpa-tweets-euw1/tweets/' 
 3. In your AWS account navigate to the **Athena** service 
 4. In the top left menu, choose *Query Editor* 
-5. Use this code to create the Athena table. Make sure to change tweets_<your-alias> to add your alias (e.g. tweets_alexe)
+5. Use this code to create the Athena table. Make sure to change tweets_<your_alias> to add your alias (e.g. tweets_alexe)
 6. Once added, click **Run Query** 
 
 ```sql
-CREATE EXTERNAL TABLE IF NOT EXISTS default.tweets_<your-alias>(
+CREATE EXTERNAL TABLE IF NOT EXISTS default.tweets_<your_alias> (
   id bigint COMMENT 'Tweet ID', 
   text string COMMENT 'Tweet text', 
   created timestamp COMMENT 'Tweet create timestamp', 
@@ -74,7 +74,7 @@ LOCATION
 
 **Verify the table created correctly**
 
-1. You'll see an Athena table called tweets_<your-alias> in the *default* database (You may have to hit refresh). 
+1. You'll see an Athena table called tweets_<your_alias> in the *default* database (You may have to hit refresh). 
 2. If you click on the *tweets*_<your-alias> table, you can see the fields that we saw earlier. 
 3. Let's test that the tweets table works. In the same Query Editor run the following SELECT statement (clear the previous statement): 
 
@@ -95,7 +95,7 @@ We need to produce an integer for our Alexa skill. To do that we need to create 
 1. To find the last set of queries from Quicksight, go to the Athena AWS Console page, then select **History** on the top menu. 
 2. You can see the latest queries under the column **Query** (starting with the word 'SELECT'). You can copy these queries to a text editor to save later. 
 3. We'll be running these queries in the **Query Editor**. Navigate there in the top Athena menu. 
-4. Ensure that the **default** database is selected and you'll see your **tweets_<your-alias>** table. 
+4. Ensure that the **default** database is selected and you'll see your **tweets_<your_alias>** table. 
 5. The Athena syntax is widely compatible with Presto. You can learn more about it from our [Amazon Athena Getting Started](http://docs.aws.amazon.com/athena/latest/ug/getting-started.html) and the [Presto Docs](https://prestodb.io/docs/current/) web sites 
 6. Once you are happy with the value returned by your query you can move to **Step 3**, otherwise you can experiment with other query types. 
 7. Let's write a new query. Hint: The Query text to find the number of #reinvent tweets is:  <code>SELECT COUNT(*) FROM tweets </code>
@@ -254,13 +254,13 @@ If you forgot the name of your bucket you can locate the name on the output tab 
 
 Set the following Environment Variables: 
 
-<strong>vpa_athena_database:</strong> tweets_<your-alias> (e.g. tweets_alexe)
+<strong>vpa_athena_database:</strong> tweets_<your_alias> (e.g. tweets_alexe)
 
 <strong>vpa_ddb_table:</strong> VPA_Metrics_Table_<your_stack_name> (you should see this value as output from the stack you created earlier)
 
 <strong>vpa_metric_name:</strong> Reinvent Twitter Sentiment
 
-<strong>vpa_athena_query:</strong> SELECT count(*) FROM default."tweets_<your-alias>"
+<strong>vpa_athena_query:</strong> SELECT count(*) FROM default."tweets_<your_alias>"
 
 <strong>region:</strong> us-east-1 (if running out of Northern VA.) or eu-west-1 (If running out of Ireland)
 
