@@ -36,7 +36,7 @@ Alexa fits into your Voice Powered Analytics architecture as the interaction int
 
    ![img](./media/images/Alexa_Lab_v2_4.png)
 
-7. Type in the **Skill name** *Voice Powered Analytics*, Select the **Custom** button and finally click the **Create Skill** button:
+7. Type in the **Skill name** *<Your_alias> Voice Powered Analytics*, Select the **Custom** button and finally click the **Create Skill** button:
 
    ![img](./media/images/Alexa_Lab_v2_5.png)
 
