@@ -1,6 +1,6 @@
 # Voice Powered Analytics - Alexa Skills Lab
 
-In this workshop you will build a voice powered analytic engine that you can take back to your stakeholders to deliver valuable company insights. Common questions that may be asked, “Alexa, how many Unique Users did our site have last month?” and “Alexa, how many orders have breached their delivery SLA this week?”. 
+In this lab you will build a voice powered analytic engine that you can take back to your stakeholders to deliver valuable company insights. Common questions that may be asked, “Alexa, how many Unique Users did our site have last month?” and “Alexa, how many orders have breached their delivery SLA this week?”. 
 
 
 
@@ -48,7 +48,7 @@ Alexa fits into your Voice Powered Analytics architecture as the interaction int
 
    ![img](./media/images/Alexa_Lab_v2_8.png)
 
-10. Ensure the skill innvocation name is entered (if not, type:) **voice powered analytics*** (all lower case)
+10. Ensure the skill innvocation name is entered (if not, type:) **voice powered analytics** (all lower case)
 
     ![img](./media/images/Alexa_Lab_v2_9.png)
 
@@ -56,13 +56,13 @@ Alexa fits into your Voice Powered Analytics architecture as the interaction int
 
     ![img](./media/images/Alexa_Lab_v2_10.png)
 
-12. **Type the custom tntent name** *WhatsMyMetric* and **click Create Custom Intent button**
+12. **Type the custom intent name** *WhatsMyMetric* and **click Create Custom Intent button**
 
     ![img](./media/images/Alexa_Lab_v2_11.png)
 
 13. Next we're going Add utterances to our intent. This triggers an invoke of your intent through your user's voice. You'll want to add a few different variations based upon how users will interact with the different types of metrics available to query.
 
-- **Type the What’s my {metric}** (ignore the popup box) and **Click + sign** to add the utterance.
+- Type the **What’s my {metric}** (ignore the popup box) and **Click + sign** to add the utterance.
 
   ![img](./media/images/Alexa_Lab_v2_12.png)
 
@@ -76,7 +76,7 @@ Alexa fits into your Voice Powered Analytics architecture as the interaction int
 
   ![img](./media/images/Alexa_Lab_v2_14.png)
 
-- For the slot value, **enter the value of the metric** used from the *Athena_Poller* Lambda function's environment variable: metric (e.g. *reinvent twitter sentiment*. Then **click the + button**. Note: The DynamoDB item that is used as our key in the backend lambda function uses this value to query our metric's value.
+- For the slot value, **enter the value of the metric** used from the *Athena_Poller* Lambda function's environment variable: metric (e.g. *reinvent twitter sentiment*). Then **click the + button**. Note: The DynamoDB item that is used as our key in the backend lambda function uses this value to query our metric's value.
 
 **Note: Don't worry about adding ID (Optional) or Synonyms. They can be added later after you test.**
 
@@ -105,13 +105,13 @@ In our next step of this guide (Configure Alexa Backend), we will be linking a L
 
 ### Step 2: Configure Alexa Backend
 
-Now that we've configured the voice interaction, let's set up your Lambda function to be triggered by your Alexa Skills Kit and leverage your DynamoDB metrics. Note: When you ran the initial setup CloudFormation in Module 1, a Lambda function with the name starting with **::Stack Name::-AlexaMetricSkill** was deployed.
+Now that we've configured the voice interaction, let's set up your Lambda function to be triggered by your Alexa Skills Kit and leverage your DynamoDB metrics. Note: When you ran the initial setup CloudFormation, a Lambda function with the name starting with **::Stack Name::-AlexaMetricSkill** was deployed.
 
-1. Check your **AWS region** as the Lambda function needs to be in the same region that your previous resources created in Module 2 were created.
+1. Check your **AWS region** as the Lambda function needs to be in the same region as the resources created earlier.
 
 2. **Open the Lambda function, starting with ::Stack Name::-AlexaMetricSkill** that was deployed with the Setup Cloudformation. Then we'll **Configure your trigger**: Under Configuration, and in **Add Triggers** pane, **select Alexa Skills Kit** from the list. It will then add this trigger to your Lambda function.
 
-3. **Scroll down to Configure Triggers**, **click Skill ID verification disable**. Note: optionally you can use the Alexa SkillID to lock down the lambda function to your specific Alexa Skill; this is a best practice. Next, click the **Add** button, then scroll to the top of the Lambda function and click **Save**
+3. **Scroll down to Configure Triggers**, **click Skill ID verification disable**. Note: optionally you can use the Alexa Skill ID to lock down the lambda function to your specific Alexa Skill; this is a best practice. Next, click the **Add** button, then scroll to the top of the Lambda function and click **Save**
 
    ![img](./media/images/Alexa_Lab_10.png)
 
@@ -129,7 +129,7 @@ Now that we've configured the voice interaction, let's set up your Lambda functi
 
 In Step 1 "Setting up Your Voice User Interface", we created a voice user interface for the intents and utterances we expect from our users.
 
-On "Step 2 Configure Alexa Backend", we created a Lambda function that contains all of our logic for the skill. In this step, we need to connect those two pieces together.
+In Step 2 "Configure Alexa Backend", we created a Lambda function that contains all of our logic for the skill. In this step, we need to connect those two pieces together.
 
 1. **Go back to the Amazon Developer Portal** and **select your skill (Voice Powered Analytics)** from the list. You may still have a browser tab open if you started at the beginning of this tutorial.
 
@@ -145,7 +145,7 @@ On "Step 2 Configure Alexa Backend", we created a Lambda function that contains 
 
    ![img](./media/images/Alexa_Lab_v2_25.png)
 
-   Note: For this skill, we won't be using Account Linking, but you can learn more about [Linking an Alexa User with a User in Your System
+   Note: For this skill, we won't be using Account Linking, but you can learn more about Linking an Alexa User with a User in Your System
 
 5. Congratulations: You are all set to test your skill.
 
