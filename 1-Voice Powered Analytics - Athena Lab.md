@@ -310,5 +310,5 @@ Note, there should be > 10,000 tweets. If you get a number lower than this pleas
 
 ## Start working on the Alexa skill 
 
-You are now read to build the Alexa skill. Go ahead and move forward to the next lab. 
+You are now ready to build the Alexa skill. Go ahead and move forward to the next lab: [Alexa Skills](https://github.com/aemilcar/vpa/blob/master/2-Voice%20Powered%20Analytics%20-%20Alexa%20Skills%20Lab.md)
 
