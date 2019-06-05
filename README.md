@@ -25,8 +25,6 @@ We have provided a CloudFormation template to create baseline resources needed b
 
 **Please launch the template below so that the resources created will be ready by the time you get to those sections in the lab guides.**
 
-**Pick the desired region that's closest to your location for optimal performance **
-
 
 
 Each attendee will deploy their own CloudFormation stack (user_template.yml). They will need the name of the stack that was create from the base.yml in order to import certain values. 

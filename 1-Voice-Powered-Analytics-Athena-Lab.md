@@ -79,27 +79,12 @@ LOCATION
 3. Let's test that the tweets table works. In the same Query Editor run the following SELECT statement (clear the previous statement): 
 
 ```sql
-SELECT COUNT(*) AS TOTAL_TWEETS FROM tweets;
+SELECT COUNT(*) AS TOTAL_TWEETS FROM tweets_<your_alias>;
 ```
 
 
 
 The statement above shows the total amount of tweets in our data set. **Note** The result should be in the 1000's. If you got a tiny number, something is wrong. Recreate your table or ask one of the lab assistants for help.
-
-
-
-## Step 2 - Create a query to find the number of reinvent tweets. 
-
-We need to produce an integer for our Alexa skill. To do that we need to create a query that will return our desired count.
-
-1. To find the last set of queries from Quicksight, go to the Athena AWS Console page, then select **History** on the top menu. 
-2. You can see the latest queries under the column **Query** (starting with the word 'SELECT'). You can copy these queries to a text editor to save later. 
-3. We'll be running these queries in the **Query Editor**. Navigate there in the top Athena menu. 
-4. Ensure that the **default** database is selected and you'll see your **tweets_<your_alias>** table. 
-5. The Athena syntax is widely compatible with Presto. You can learn more about it from our [Amazon Athena Getting Started](http://docs.aws.amazon.com/athena/latest/ug/getting-started.html) and the [Presto Docs](https://prestodb.io/docs/current/) web sites 
-6. Once you are happy with the value returned by your query you can move to **Step 3**, otherwise you can experiment with other query types. 
-7. Let's write a new query. Hint: The Query text to find the number of #reinvent tweets is:  <code>SELECT COUNT(*) FROM tweets </code>
-
 
 
 <strong>Optional - Try out a few additional queries (and Attendee Submissions). </strong>
@@ -130,17 +115,17 @@ SELECT count(*) from tweets where text like '%excited%'
 
 
 
-## Step 3 - Create a lambda to query Athena
+## Step 2 - Create a lambda to query Athena
 
 In this step we will create a Lambda function that runs every 5 minutes. The lambda code is provided, but please take the time to review the function. 
 
 1. Go to the AWS Lambda console page. 
 2. Click Create Function
 3. Click Author one from scratch 
-4. Under name add <your-alias>_vpa_lambda_athena_poller. Example, alexe_vpa_lambda_athena_poller. 
+4. Under name add **<your_alias>_vpa_lambda_athena_poller**. Example, alexe_vpa_lambda_athena_poller. 
 5. For Runtime, select <strong>Python 3.6</strong>
 6. Under Role, leave the default value of Choose an existing role
-7. Under existing role, select VPALambdaAthenaPollerRole_<stack_name> (get the stack name from your administrator).
+7. Under existing role, select VPALambdaAthenaPollerRole_<stack_name> (e.g. VPALambdaAthenaPollerRole_Amazon. Get the stack name from your administrator).
 8. Click Create Function. 
 
 
@@ -283,13 +268,13 @@ Set the timeout to 2 min
 We will use CloudWatch Event Rule created from the CloudFormation template to trigger this Lambda. Scroll up to the top of the screen, select the pane <strong>Triggers</strong>. 
 
 1. Under the Add trigger, click the empty box icon, followed by CloudWatch Events. 
-2. Scroll down, and under Rule, select <your-stack-name>-VPAEvery5Min (e.g. alexe-VPAEvery5Min). 
+2. Scroll down, and under Rule, select <your_stack_name>-VPAEvery5Min (e.g. alexe-VPAEvery5Min). 
 3. Leave the box checked for Enable trigger. 
 4. Click the Add button, then scroll up and click Save (the Lambda function)
 
 
 
-## Step 4 - Create a test event and test the Lambda 
+## Step 3 - Create a test event and test the Lambda 
 
 At this point we are ready to test the Lambda. Before doing that we have to create a test event. Lambda provides many test events, and provides for the ability to create our own event. In this case, we will use the standard CloudWatch Event.
 
